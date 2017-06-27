@@ -11,7 +11,7 @@ Example:
 
 On the script execution:
 
-1. The last external ip is retrieved from a local file (old_ip) in the same directory of the script.
+1. The last external ip is retrieved from a local file (`old_ip`) in the same directory of the script.
 2. The actual external ip is retrieved from a call to opendns.
 3. If the IPs are different:
   - Create a new Security Group on AWS with the name of the first parameter.
