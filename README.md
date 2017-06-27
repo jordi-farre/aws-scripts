@@ -9,7 +9,7 @@ Example:
 
 `allow_user_external_ip_on_instance.sh security_group instance_id`
 
-On the script execution:
+What the script does:
 
 1. The last external ip is retrieved from a local file (`old_ip`) in the same directory of the script.
 1. The actual external ip is retrieved from a call to opendns.
