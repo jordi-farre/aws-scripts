@@ -5,6 +5,10 @@ This script receives two parameters:
 1. Name of the security group to be created.
 2. Instance Id where we want to add the security group.
 
+Example:
+
+`allow_user_external_ip_on_instance.sh security_group instance_id`
+
 On the script execution:
 
 1. The last external ip is retrieved from a local file (old_ip) in the same directory of the script.
