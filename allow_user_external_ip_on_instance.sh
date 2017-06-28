@@ -54,12 +54,11 @@ function changeIPAddress() {
   echo "Changing IP on AWS..."
   createRemoteSecurityGroup $remote_sg_name $remote_sg_name
   getRemoteSecurityGroupId
-  revokeSecurityGroupIngress $remote_sg_name "tcp" "8080" $old_ip
-  revokeSecurityGroupIngress $remote_sg_name "tcp" "8081" $old_ip
-  revokeSecurityGroupIngress $remote_sg_name "tcp" "9000" $old_ip
-  authorizeSecurityGroupIngress $remote_sg_name "tcp" "8080" $external_ip
-  authorizeSecurityGroupIngress $remote_sg_name "tcp" "8081" $external_ip
-  authorizeSecurityGroupIngress $remote_sg_name "tcp" "9000" $external_ip
+  declare -a ports=( 8080 8081 9000)
+  for port in "${ports[@]}"; do
+    revokeSecurityGroupIngress $remote_sg_name "tcp" $port $old_ip
+    authorizeSecurityGroupIngress $remote_sg_name "tcp" $port $external_ip
+  done
   getInstanceSecurityGroupList
   if [[ $instance_sg_list != *$remote_sg_id* ]]; then
     addRemoteSecurityGroupToInstance
