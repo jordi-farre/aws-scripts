@@ -1,8 +1,13 @@
 #!/bin/sh
 
 remote_sg_name=$1
-echo "Remote security group: $remote_sg_name"
 instance_id=$2
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 remote_security_group instance_id"
+  exit 1
+fi
+
+echo "Remote security group: $remote_sg_name"
 echo "Instance Id: $instance_id"
 
 external_ip="none"
