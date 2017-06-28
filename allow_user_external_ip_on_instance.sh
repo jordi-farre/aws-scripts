@@ -28,7 +28,7 @@ function createRemoteSecurityGroup() {
 
 remote_sg_id="none"
 function getRemoteSecurityGroupId() {
-  remote_sg_id=$(aws ec2 describe-security-groups --group-names RemoteWorkers | jq -r '.SecurityGroups[0].GroupId')
+  remote_sg_id=$(aws ec2 describe-security-groups --group-names $remote_sg_name | jq -r '.SecurityGroups[0].GroupId')
   echo "Remote security group id: $remote_sg_id"
 }
 
